@@ -3,7 +3,6 @@ package three.javers.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,11 +28,11 @@ public class Person {
     private String lastName;
 
     @Column
-    private LocalDate birthday;
+    private LocalDate birthdate;
 
     public Person(String name, String lastName, LocalDate birthday) {
         this.name = name;
         this.lastName = lastName;
-        this.birthday = birthday;
+        this.birthdate = birthday;
     }
 }

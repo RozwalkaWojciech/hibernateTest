@@ -2,6 +2,7 @@ package three.javers.servlet;
 
 import three.javers.model.Person;
 import three.javers.service.PersonService;
+import three.javers.utils.DateFormatter;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 
 @WebServlet("/save-person")
 public class SavePersonServlet extends HttpServlet {
@@ -23,8 +25,9 @@ public class SavePersonServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
+        LocalDate birthday = DateFormatter.localDateFormatter(request.getParameter("birthdate"));
 
-        Person person = new Person(name, lastName);
+        Person person = new Person(name, lastName, birthday);
         personService.savePerson(person);
 
         PrintWriter printWriter = response.getWriter();
