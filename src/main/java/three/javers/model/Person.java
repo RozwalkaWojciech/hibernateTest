@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -27,8 +28,12 @@ public class Person {
     @Column
     private String lastName;
 
-    public Person(String name, String lastName) {
+    @Column
+    private LocalDate birthday;
+
+    public Person(String name, String lastName, LocalDate birthday) {
         this.name = name;
         this.lastName = lastName;
+        this.birthday = birthday;
     }
 }
