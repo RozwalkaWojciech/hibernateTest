@@ -1,5 +1,6 @@
 package three.javers.dao;
 
+import three.javers.dto.PersonDto;
 import three.javers.model.Person;
 
 import javax.ejb.Stateless;
@@ -12,9 +13,9 @@ public class PersonDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Person savePerson(Person person) {
-        entityManager.persist(person);
-        return person;
+    public PersonDto savePerson(PersonDto personDto) {
+        entityManager.persist(personDto);
+        return personDto;
     }
 
     public Person findById(Integer id) {
