@@ -29,9 +29,4 @@ public class Person {
     @Column
     private LocalDate birthdate;
 
-    public Person(String name, String lastName, LocalDate birthday) {
-        this.name = name;
-        this.lastName = lastName;
-        this.birthdate = birthday;
-    }
 }
