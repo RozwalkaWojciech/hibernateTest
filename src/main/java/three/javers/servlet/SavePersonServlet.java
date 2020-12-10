@@ -1,5 +1,6 @@
 package three.javers.servlet;
 
+import three.javers.dto.PersonDto;
 import three.javers.model.Person;
 import three.javers.service.PersonService;
 import three.javers.utils.DateFormatter;
@@ -27,11 +28,11 @@ public class SavePersonServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         LocalDate birthday = DateFormatter.localDateFormatter(request.getParameter("birthdate"));
 
-        Person person = new Person(name, lastName, birthday);
-        personService.savePerson(person);
+        PersonDto personDto = new PersonDto(name, lastName, birthday);
+        personService.savePerson(personDto);
 
         PrintWriter printWriter = response.getWriter();
-        printWriter.println(String.format("Person saved: %s", person.toString()));
+        printWriter.println(String.format("Person saved: %s", personDto.toString()));
     }
 
 }

@@ -17,6 +17,12 @@ public class PersonDto {
     private String lastName;
     private LocalDate birthdate;
 
+    public PersonDto(String name, String lastName, LocalDate birthdate) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
+    }
+
     public Person dtoToPerson(PersonDto personDto) {
         Person person = new Person();
         person.setName(personDto.getName());
