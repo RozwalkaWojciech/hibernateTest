@@ -1,7 +1,6 @@
 package three.javers.servlet;
 
 import three.javers.dto.PersonDto;
-import three.javers.model.Person;
 import three.javers.service.PersonService;
 import three.javers.utils.DateFormatter;
 

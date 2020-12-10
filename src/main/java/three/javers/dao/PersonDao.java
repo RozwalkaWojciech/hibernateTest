@@ -4,7 +4,6 @@ import three.javers.dto.PersonDto;
 import three.javers.model.Person;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,13 +12,11 @@ public class PersonDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-    @Inject
-    private PersonDto personDto;
 
     public PersonDto savePerson(PersonDto personDto) {
-        Person person = personDto.dtoToPerson(personDto);
+        Person person = PersonDto.dtoToPerson(personDto);
         entityManager.persist(person);
-        return personDto.personToDto(person);
+        return PersonDto.personToDto(person);
     }
 
     public Person findById(Integer id) {

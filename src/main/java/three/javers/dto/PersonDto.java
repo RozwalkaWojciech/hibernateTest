@@ -23,7 +23,7 @@ public class PersonDto {
         this.birthdate = birthdate;
     }
 
-    public Person dtoToPerson(PersonDto personDto) {
+    public static Person dtoToPerson(PersonDto personDto) {
         Person person = new Person();
         person.setName(personDto.getName());
         person.setLastName(personDto.getLastName());
@@ -31,7 +31,7 @@ public class PersonDto {
         return person;
     }
 
-    public PersonDto personToDto(Person person) {
+    public static PersonDto personToDto(Person person) {
         PersonDto personDto = new PersonDto();
         personDto.setId(person.getId());
         personDto.setName(person.getName());
