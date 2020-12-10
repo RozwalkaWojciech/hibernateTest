@@ -5,7 +5,6 @@ import three.javers.model.Person;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import java.util.UUID;
 
 @RequestScoped
 public class PersonService {
@@ -17,15 +16,15 @@ public class PersonService {
         return personDao.savePerson(person);
     }
 
-    public Person findById(UUID id) {
+    public Person findById(Integer id) {
         return personDao.findById(id);
     }
 
-    public Person edit(UUID id, Person person) {
+    public Person edit(Integer id, Person person) {
         return personDao.edit(id, person);
     }
 
-    public boolean remove(UUID id) {
+    public boolean remove(Integer id) {
         return personDao.remove(id);
     }
 

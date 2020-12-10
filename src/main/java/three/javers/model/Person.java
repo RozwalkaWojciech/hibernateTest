@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +18,7 @@ public class Person {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Integer id;
 
     @Column
     private String name;
