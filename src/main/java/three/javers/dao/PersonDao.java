@@ -24,13 +24,15 @@ public class PersonDao {
     }
 
     public PersonDto edit(Integer id, PersonDto personDto) {
-        PersonDto personToEdit = findById(id);
+
+        Person personToEdit = entityManager.find(Person.class, id);
+
         if (personToEdit != null) {
             personToEdit.setName(personDto.getName());
             personToEdit.setLastName(personDto.getLastName());
             personToEdit.setBirthdate(personDto.getBirthdate());
             entityManager.merge(personToEdit);
-            return personToEdit;
+            return PersonDto.personToDto(personToEdit);
         }
         return null;
     }
