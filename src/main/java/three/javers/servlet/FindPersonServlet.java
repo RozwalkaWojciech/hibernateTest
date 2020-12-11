@@ -21,13 +21,18 @@ public class FindPersonServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//TODO check id
-        Integer id = Integer.parseInt(request.getParameter("id"));
+        int id = 0;
 
-        PersonDto personById = personService.findById(id);
+        try {
+            id = Integer.parseInt(request.getParameter("id"));
+            PersonDto personById = personService.findById(id);
 
-        PrintWriter printWriter = response.getWriter();
-        printWriter.println(String.format("Person by id= %s", personById.toString()));
+            PrintWriter printWriter = response.getWriter();
+            printWriter.println(String.format("Person by id= %s", personById.toString()));
+        }
+        //TODO REFACTOR THIS
+        catch (NumberFormatException e) {
+            System.out.println("It is not number!");
+        }
     }
-
 }
