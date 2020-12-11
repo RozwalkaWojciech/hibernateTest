@@ -1,8 +1,10 @@
 package three.javers.servlet;
 
+import three.javers.dto.PersonDto;
 import three.javers.service.PersonService;
 
 import javax.inject.Inject;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +19,15 @@ public class FindPersonServlet extends HttpServlet {
     PersonService personService;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Integer id = Integer.getInteger(request.getParameter("id"));
+//TODO check id
+        Integer id = Integer.parseInt(request.getParameter("id"));
+
+        PersonDto personById = personService.findById(id);
 
         PrintWriter printWriter = response.getWriter();
-        printWriter.println(personService.findById(id));
+        printWriter.println(String.format("Person by id= %s", personById.toString()));
     }
 
 }

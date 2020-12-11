@@ -12,7 +12,7 @@
 
 <form action="find-person" method="post">
     <label for="idPost"> Find by ID: </label> <input type="text" name="id" id="idPost">
-    <button type="submit"> FIND</button>
+    <button type="submit"> FIND </button>
 </form>
 
 <%--CREATE NEW FORMS--%>
