@@ -33,9 +33,9 @@ public class PersonDao {
         }
         return null;
     }
-//TODO
+
     public boolean remove(Integer id) {
-        Person personToRemove = findById(id);
+        PersonDto personToRemove = findById(id);
         if (personToRemove != null) {
             entityManager.remove(personToRemove);
             return true;

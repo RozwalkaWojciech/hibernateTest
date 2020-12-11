@@ -2,7 +2,6 @@ package three.javers.service;
 
 import three.javers.dao.PersonDao;
 import three.javers.dto.PersonDto;
-import three.javers.model.Person;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -24,7 +23,7 @@ public class PersonService {
     public PersonDto edit(Integer id, PersonDto personDto) {
         return personDao.edit(id, personDto);
     }
-//TODO
+
     public boolean remove(Integer id) {
         return personDao.remove(id);
     }
