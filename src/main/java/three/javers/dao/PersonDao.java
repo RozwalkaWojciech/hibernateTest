@@ -28,6 +28,7 @@ public class PersonDao {
         if (personToEdit != null) {
             personToEdit.setName(personDto.getName());
             personToEdit.setLastName(personDto.getLastName());
+            personToEdit.setBirthdate(personDto.getBirthdate());
             entityManager.merge(personToEdit);
             return personToEdit;
         }
