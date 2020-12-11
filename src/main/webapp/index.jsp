@@ -25,7 +25,12 @@
     <button type="submit"> EDIT</button>
 </form>
 
-<%--CREATE NEW FORMS--%>
+<br>
+
+<form action="remove-person" method="post">
+    <label for="idToRemove"> Person to remove: </label> <input type="text" name="id" id="idToRemove">
+    <button type="submit"> REMOVE</button>
+</form>
 
 </body>
 </html>
