@@ -19,10 +19,10 @@ public class PersonDao {
         return PersonDto.personToDto(person);
     }
 
-    public Person findById(Integer id) {
-        return entityManager.find(Person.class, id);
+    public PersonDto findById(Integer id) {
+        return PersonDto.personToDto(entityManager.find(Person.class, id));
     }
-
+//TODO
     public Person edit(Integer id, Person person) {
         Person personToEdit = findById(id);
         if (personToEdit != null) {
@@ -33,7 +33,7 @@ public class PersonDao {
         }
         return null;
     }
-
+//TODO
     public boolean remove(Integer id) {
         Person personToRemove = findById(id);
         if (personToRemove != null) {

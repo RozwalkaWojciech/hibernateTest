@@ -17,14 +17,14 @@ public class PersonService {
         return personDao.savePerson(personDto);
     }
 
-    public Person findById(Integer id) {
+    public PersonDto findById(Integer id) {
         return personDao.findById(id);
     }
-
+//TODO
     public Person edit(Integer id, Person person) {
         return personDao.edit(id, person);
     }
-
+//TODO
     public boolean remove(Integer id) {
         return personDao.remove(id);
     }
