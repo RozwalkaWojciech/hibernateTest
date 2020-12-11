@@ -20,9 +20,9 @@ public class PersonService {
     public PersonDto findById(Integer id) {
         return personDao.findById(id);
     }
-//TODO
-    public Person edit(Integer id, Person person) {
-        return personDao.edit(id, person);
+
+    public PersonDto edit(Integer id, PersonDto personDto) {
+        return personDao.edit(id, personDto);
     }
 //TODO
     public boolean remove(Integer id) {

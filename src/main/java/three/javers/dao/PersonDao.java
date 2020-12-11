@@ -22,12 +22,12 @@ public class PersonDao {
     public PersonDto findById(Integer id) {
         return PersonDto.personToDto(entityManager.find(Person.class, id));
     }
-//TODO
-    public Person edit(Integer id, Person person) {
-        Person personToEdit = findById(id);
+
+    public PersonDto edit(Integer id, PersonDto personDto) {
+        PersonDto personToEdit = findById(id);
         if (personToEdit != null) {
-            personToEdit.setName(person.getName());
-            personToEdit.setLastName(person.getLastName());
+            personToEdit.setName(personDto.getName());
+            personToEdit.setLastName(personDto.getLastName());
             entityManager.merge(personToEdit);
             return personToEdit;
         }
