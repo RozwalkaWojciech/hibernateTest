@@ -24,9 +24,7 @@ public class PersonDao {
     }
 
     public PersonDto edit(Integer id, PersonDto personDto) {
-
         Person personToEdit = entityManager.find(Person.class, id);
-
         if (personToEdit != null) {
             personToEdit.setName(personDto.getName());
             personToEdit.setLastName(personDto.getLastName());
@@ -38,7 +36,7 @@ public class PersonDao {
     }
 
     public boolean remove(Integer id) {
-        PersonDto personToRemove = findById(id);
+        Person personToRemove = entityManager.find(Person.class, id);
         if (personToRemove != null) {
             entityManager.remove(personToRemove);
             return true;
