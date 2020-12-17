@@ -5,7 +5,6 @@ import three.javers.service.PersonService;
 import three.javers.utils.DateFormatter;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,7 @@ public class SavePersonServlet extends HttpServlet {
     PersonService personService;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
@@ -30,8 +29,11 @@ public class SavePersonServlet extends HttpServlet {
         PersonDto personDto = new PersonDto(name, lastName, birthday);
         personService.savePerson(personDto);
 
-        PrintWriter printWriter = response.getWriter();
-        printWriter.println(String.format("Person saved: %s", personDto.toString()));
+        try (PrintWriter printWriter = response.getWriter()) {
+            printWriter.println(String.format("Person saved: %s", personDto.toString()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

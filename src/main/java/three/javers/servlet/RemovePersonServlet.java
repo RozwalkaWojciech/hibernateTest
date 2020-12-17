@@ -3,7 +3,6 @@ package three.javers.servlet;
 import three.javers.service.PersonService;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,19 +17,25 @@ public class RemovePersonServlet extends HttpServlet {
     PersonService personService;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
-        Integer id = Integer.parseInt(request.getParameter("id"));
+        Integer id = null;
+        try {
+            id = Integer.parseInt(request.getParameter("id"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
 
         boolean remove = personService.remove(id);
 
-        PrintWriter printWriter = response.getWriter();
-
-        if (remove) {
-            printWriter.println(String.format("Person by id %s is remove", id));
-        } else {
-            printWriter.println(String.format("Person by id %s is not remove", id));
+        try (PrintWriter printWriter = response.getWriter()) {
+            if (remove) {
+                printWriter.println(String.format("Person by id %s is remove", id));
+            } else {
+                printWriter.println(String.format("Person by id %s is not remove", id));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
 }
