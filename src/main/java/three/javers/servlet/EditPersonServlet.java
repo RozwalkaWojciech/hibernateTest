@@ -5,7 +5,6 @@ import three.javers.service.PersonService;
 import three.javers.utils.DateFormatter;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +20,16 @@ public class EditPersonServlet extends HttpServlet {
     PersonService personService;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
-        Integer id = Integer.parseInt(request.getParameter("id"));
+        Integer id = null;
+
+        try {
+            id = Integer.parseInt(request.getParameter("id"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
         LocalDate birthdate = DateFormatter.localDateFormatter(request.getParameter("birthdate"));
@@ -31,9 +37,10 @@ public class EditPersonServlet extends HttpServlet {
         PersonDto editPersonDto = new PersonDto(name, lastName, birthdate);
         personService.edit(id, editPersonDto);
 
-        PrintWriter printWriter = response.getWriter();
-        printWriter.println(String.format("New person is: %s", editPersonDto.toString()));
-
+        try (PrintWriter printWriter = response.getWriter()) {
+            printWriter.println(String.format("New person is: %s", editPersonDto.toString()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }

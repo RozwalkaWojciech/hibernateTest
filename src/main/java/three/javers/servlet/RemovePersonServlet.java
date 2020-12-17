@@ -20,6 +20,7 @@ public class RemovePersonServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         Integer id = null;
+
         try {
             id = Integer.parseInt(request.getParameter("id"));
         } catch (NumberFormatException e) {

@@ -4,7 +4,6 @@ import three.javers.dto.PersonDto;
 import three.javers.service.PersonService;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +18,21 @@ public class FindPersonServlet extends HttpServlet {
     PersonService personService;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
-        int id = 0;
+        Integer id = null;
 
         try {
             id = Integer.parseInt(request.getParameter("id"));
-            PersonDto personById = personService.findById(id);
-
-            PrintWriter printWriter = response.getWriter();
-            printWriter.println(String.format("Person by id= %s", personById.toString()));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
-        //TODO REFACTOR THIS
-        catch (NumberFormatException e) {
-            System.out.println("It is not number!");
+        PersonDto personById = personService.findById(id);
+
+        try (PrintWriter printWriter = response.getWriter()) {
+            printWriter.println(String.format("Person by id= %s", personById.toString()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
