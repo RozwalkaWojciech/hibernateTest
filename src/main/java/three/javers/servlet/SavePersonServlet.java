@@ -27,7 +27,7 @@ public class SavePersonServlet extends HttpServlet {
         String year = request.getParameter("year");
         String month = request.getParameter("month");
         String day = request.getParameter("day");
-
+//TODO check input
         if (!year.equals("") && !month.equals("") && !day.equals("")) {
             String birthdate = year + "-" + month + "-" + day;
             LocalDate birthday = DateFormatter.localDateFormatter(birthdate);
