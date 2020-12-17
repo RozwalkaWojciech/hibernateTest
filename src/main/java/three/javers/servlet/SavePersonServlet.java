@@ -24,16 +24,22 @@ public class SavePersonServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String lastName = request.getParameter("lastName");
-        LocalDate birthday = DateFormatter.localDateFormatter(request.getParameter("birthdate"));
+        String year = request.getParameter("year");
+        String month = request.getParameter("month");
+        String day = request.getParameter("day");
 
-        PersonDto personDto = new PersonDto(name, lastName, birthday);
-        personService.savePerson(personDto);
+        if (!year.equals("") && !month.equals("") && !day.equals("")) {
+            String birthdate = year + "-" + month + "-" + day;
+            LocalDate birthday = DateFormatter.localDateFormatter(birthdate);
 
-        try (PrintWriter printWriter = response.getWriter()) {
-            printWriter.println(String.format("Person saved: %s", personDto.toString()));
-        } catch (IOException e) {
-            e.printStackTrace();
+            PersonDto personDto = new PersonDto(name, lastName, birthday);
+            personService.savePerson(personDto);
+
+            try (PrintWriter printWriter = response.getWriter()) {
+                printWriter.println(String.format("Person saved: %s", personDto.toString()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
-
 }

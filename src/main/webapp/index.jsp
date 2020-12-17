@@ -9,9 +9,9 @@
     <label for="namePost"> Name: </label> <input type="text" name="name" id="namePost">
     <label for="lastNamePost"> Last Name: </label> <input type="text" name="lastName" id="lastNamePost">
     Birthdate
-    <label for="yearPost"> Year(yyyy): </label> <input type="text" name="birthdate" id="yearPost">
-    <label for="monthPost"> Month(MM): </label> <input type="text" name="birthdate" id="monthPost">
-    <label for="dayPost"> Day(dd): </label> <input type="text" name="birthdate" id="dayPost">
+    <label for="yearPost"> Year(yyyy): </label> <input type="text" name="year" id="yearPost">
+    <label for="monthPost"> Month(MM): </label> <input type="text" name="month" id="monthPost">
+    <label for="dayPost"> Day(dd): </label> <input type="text" name="day" id="dayPost">
     <button type="submit"> SAVE</button>
 </form>
 
