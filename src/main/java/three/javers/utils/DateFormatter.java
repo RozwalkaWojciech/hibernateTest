@@ -5,9 +5,11 @@ import java.time.format.DateTimeFormatter;
 
 public class DateFormatter {
 
+    private DateFormatter() {
+    }
+
     public static LocalDate localDateFormatter(String localDate) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return LocalDate.parse(localDate, dateTimeFormatter);
     }
-
 }
